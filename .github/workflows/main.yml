@@ -22,7 +22,8 @@ jobs:
 
      #finally build your app with the latest command
       - name: Build and test with Maven
-        run: cd  ./devops-resources-main/solution/01-docker/simple-api/ && mvn clean verify
+        run: cd  ./devops-resources-main/solution/01-docker/simple-api/ && mvn -B verify sonar:sonar -Dsonar.projectKey=githubaction_devops -Dsonar.organization=githubaction -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./pom.xml
+
         
       - name: Login to DockerHub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
