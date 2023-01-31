@@ -22,4 +22,4 @@ jobs:
 
      #finally build your app with the latest command
       - name: Build and test with Maven
-        run: cd  DevOps/devops-resources-main/solution/01-docker/simple-api/pom.xml && mvn clean verify
+        run: cd  DevOps/devops-resources-main/solution/01-docker/simple-api/ && mvn clean verify
