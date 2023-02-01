@@ -37,3 +37,23 @@ jobs:
           tags:  ${{secrets.DOCKERHUB_USERNAME}}/tp-devops:simple-api
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
+          
+      - name: Build image and push backend
+        uses: docker/build-push-action@v3
+        with:
+            # relative path to the place where source code with Dockerfile is located
+            context:  ./devops-resources-main/solution/01-docker/httpd/
+            # Note: tags has to be all lower-case
+            tags:  ${{secrets.DOCKERHUB_USERNAME}}/adminer:1.0
+            # build on feature branches, push only on main branch
+            push: ${{ github.ref == 'refs/heads/main' }}
+            
+      - name: Build image and push backend
+        uses: docker/build-push-action@v3
+        with:
+          # relative path to the place where source code with Dockerfile is located
+          context:  ./devops-resources-main/solution/01-docker/database/
+          # Note: tags has to be all lower-case
+          tags:  ${{secrets.DOCKERHUB_USERNAME}}/f29f2ffbae59:1.0
+          # build on feature branches, push only on main branch
+          push: ${{ github.ref == 'refs/heads/main' }}
